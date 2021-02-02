@@ -10,6 +10,7 @@ class Encoder
 private:
 
 	const std::uint8_t m_encoderPin{};
+
 	const int m_pulsesPerTurn{};
 
 	//in meters
@@ -17,10 +18,6 @@ private:
 
 	// m_count is used as an iteger but defining it as double it simplifies some double casting in the class
 	int m_count{0};
-
-	void encoderInit();
-
-	//friend void counter(void);
 
 public:
 
@@ -56,11 +53,4 @@ public:
 
 };
 
-/*void counter(void)
-{
-	increaseCount();
-	delay(5);
-	return;
-}
-*/
 #endif

@@ -1,27 +1,11 @@
 #include "Encoder.h"
-#include <wiringPi.h>
+
 #include <iostream>
-#include <cstdlib>
 
-/*void counter(void)
-{
-	increaseCount();
-	delay(5);
-	return;
-}*/
-
-/*void Encoder::encoderInit()
-{
-	//set the pin mode
-	pinMode(m_encoderPin, INPUT);
-	//set the interrupt counter
-	wiringPiISR(m_encoderPin, INT_EDGE_BOTH, counter);
-}*/
 
 double Encoder::getRotations(double delayRatioPerSeconds, bool RPM)
 {
 	double rotations{getCountTurnRatio()*delayRatioPerSeconds};
-
 
 	if (RPM)
 	{
@@ -29,6 +13,7 @@ double Encoder::getRotations(double delayRatioPerSeconds, bool RPM)
 	}
 	return rotations; //RPS
 }
+
 
 double Encoder::getSpeed(double delayRatioPerSeconds)
 {
