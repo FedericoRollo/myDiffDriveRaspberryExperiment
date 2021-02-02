@@ -18,8 +18,11 @@ void leftCounter(void);
 Encoder right_encoder{right_encoder_pin, pulsesPerTurn, wheelCircumference, (*rightCounter) };
 Encoder left_encoder{left_encoder_pin, pulsesPerTurn, wheelCircumference, (*leftCounter) };
 
+
+
 int main(int argc, char const *argv[])
 {
+	//setup of the wiring pi library
 	if(wiringPiSetup()==-1)
 	{
 		exit(1);
@@ -39,11 +42,13 @@ int main(int argc, char const *argv[])
 	return 0;
 }
 
+//globl callback function declaration for the right interrupt counter
 void rightCounter(void)
 {
 	right_encoder.increaseCount();
 }
 
+//globl callback function declaration for the left interrupt counter
 void leftCounter(void)
 {
 	left_encoder.increaseCount();
