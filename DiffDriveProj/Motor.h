@@ -11,6 +11,8 @@ private:
 	std::uint8_t m_forward_pin;
 	std::uint8_t m_backward_pin;
 
+	bool m_isMoving{false};
+
 public:
 	Motor(std::uint8_t PWM_pin, std::uint8_t forward_pin, std::uint8_t backward_pin): 
 		m_PWM_pin{PWM_pin},
@@ -22,11 +24,18 @@ public:
 		pinMode(m_backward_pin, OUTPUT);
 	}
 
+	~Motor()
+	{
+		this->setPWM(0);
+	}
+
 /*	std::uint8_t getForwardPin(){return m_forward_pin;}
 
 	std::uint8_t getBackwardPin(){return m_backward_pin;}
 
 	std::uint8_t getPWMPin(){return m_PWM_pin;}*/
+
+	bool isMoving(){return m_isMoving;}
 
 	void setForwardDirection();
 

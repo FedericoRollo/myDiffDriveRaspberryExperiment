@@ -24,4 +24,15 @@ void Motor::setPWM(int PWM_percentage)
 	int PWM_value{(PWM_percentage/100.0)*max_PWM_value};
 
 	pwmWrite(m_PWM_pin, PWM_value);
+
+	if (PWM_value>0)
+	{
+		m_isMoving=true;
+		//std::cout << "Motor is moving\n";
+	}
+	else //if (PWM_value==0)
+	{
+		m_isMoving=false;
+		//std::cout << "Motor stopped\n";
+	}
 }

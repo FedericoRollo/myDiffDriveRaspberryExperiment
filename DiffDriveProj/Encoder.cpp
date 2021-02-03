@@ -3,8 +3,10 @@
 #include <iostream>
 
 
-double Encoder::getRotations(double delayRatioPerSeconds, bool RPM)
+double Encoder::getRotations(int secDelay, bool RPM)
 {
+	double delayRatioPerSeconds{1000.0/secDelay};
+
 	double rotations{getCountTurnRatio()*delayRatioPerSeconds};
 
 	if (RPM)
@@ -15,7 +17,7 @@ double Encoder::getRotations(double delayRatioPerSeconds, bool RPM)
 }
 
 
-double Encoder::getSpeed(double delayRatioPerSeconds)
+double Encoder::getSpeed(int secDelay)
 {
 	if (m_wheelCircumference<=0.0)
 	{
@@ -24,7 +26,7 @@ double Encoder::getSpeed(double delayRatioPerSeconds)
 
 	//compute the RPS with getRotations and then multiply them for the wheel circumference
 	//the counter is reset by the getRotations function. 
-	auto speed{getRotations(delayRatioPerSeconds,false)*getWheelCircumference()};
+	auto speed{getRotations(secDelay,false)*getWheelCircumference()};
 
 	return speed; // m/s
 }

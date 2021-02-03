@@ -47,9 +47,9 @@ public:
 
 	double getWheelCircumference(){return m_wheelCircumference;}
 
-	double getRotations(double delayRatioPerSeconds, bool RPM=true);
+	double getRotations(int secDelay, bool RPM=true);
 
-	double getSpeed(double delayRatioPerSeconds);
+	double getSpeed(int secDelay);
 
 };
 
