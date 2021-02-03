@@ -42,6 +42,10 @@ public:
 		m_count = 0;
 		return temp;
 	}
+	//ALWAYS reset the count when a motor start moving
+	//otherwise starting noise/damping of the encoder will generate an error
+	//an other option could be to discard the first reading of the encoder
+	void resetCount(){m_count=0;}
 
 	double getCountTurnRatio(){return getCount()/static_cast<double>(m_pulsesPerTurn);}
 
@@ -50,6 +54,8 @@ public:
 	double getRotations(int secDelay, bool RPM=true);
 
 	double getSpeed(int secDelay);
+
+
 
 };
 
