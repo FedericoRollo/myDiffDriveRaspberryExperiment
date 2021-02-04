@@ -42,9 +42,9 @@ int main(int argc, char const *argv[])
 	digitalWrite(right_forward_pin,HIGH);
 	digitalWrite(right_backward_pin,LOW);
 	
-	std::cout << "3\n";
 	pwmWrite(PWM_right_pin, 900);
 	pwmWrite(PWM_left_pin, 900);
+	
 	delay(4000);
 
 	pwmWrite(PWM_right_pin, 0);

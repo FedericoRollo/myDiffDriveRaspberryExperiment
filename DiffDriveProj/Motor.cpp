@@ -28,11 +28,31 @@ void Motor::setPWM(int PWM_percentage)
 	if (PWM_value>0)
 	{
 		m_isMoving=true;
-		//std::cout << "Motor is moving\n";
 	}
 	else //if (PWM_value==0)
 	{
 		m_isMoving=false;
-		//std::cout << "Motor stopped\n";
 	}
+}
+
+bool Motor::setSpeed(double motorSpeed)
+{
+
+	
+	assert(motorSpeed<=m_max_speed && motorSpeed >= -m_max_speed);
+
+	if (motorSpeed>=0)
+	{
+		this->setForwardDirection();
+	}
+	else
+	{
+		this->setBackwardDirection();
+		motorSpeed = -motorSpeed;
+	}
+
+
+	double PWM_percentage = motorSpeed/m_max_speed*100; // percentage of motor speed wrt the max speed
+
+	this->setPWM(PWM_percentage);
 }

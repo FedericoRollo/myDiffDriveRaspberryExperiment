@@ -13,7 +13,7 @@ private:
 
 	const int m_pulsesPerTurn{};
 
-	//in meters
+	//in centimeters
 	const double m_wheelCircumference{};
 
 	// m_count is used as an iteger but defining it as double it simplifies some double casting in the class
@@ -53,7 +53,7 @@ public:
 
 	double getRotations(int secDelay, bool RPM=true);
 
-	double getSpeed(int secDelay);
+	double getSpeed(int secDelay); // cm/s
 
 
 
