@@ -34,15 +34,16 @@ public:
 
 	bool isMoving(){return m_isMoving;}
 
-	double getMaxSpeed(){return m_max_speed;}
+	//double getMaxSpeed(){return m_max_speed;}
 
 	void setForwardDirection();
 
 	void setBackwardDirection();
 
 	void setPWM(int PWM_percentage);
+	void setPWM(double PWM_percentage);
 
-	bool setSpeed(double motorSpeed); //cm/s
+	//bool setSpeed(double motorSpeed); //cm/s
 
 };
 
