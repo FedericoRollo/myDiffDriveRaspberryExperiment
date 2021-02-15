@@ -19,6 +19,8 @@ void Motor::setPWM(int PWM_percentage)
 {
 	assert(PWM_percentage>=0 && PWM_percentage<=100);
 
+	PWM_percentage = 30 + PWM_percentage/5;
+
 	constexpr int max_PWM_value{1023};
 
 	int PWM_value{(PWM_percentage/100.0)*max_PWM_value};
@@ -39,6 +41,10 @@ void Motor::setPWM(double PWM_percentage)
 {
 	assert(PWM_percentage>=0 && PWM_percentage<=100);
 
+	//This scaling has been added for this project because the motor changes its speed linearly from 30% to 50% PWM before and after it saturates
+	//the controller will then adjust the control depending on disturbances and neglected dynamics acting
+	PWM_percentage = 30 + PWM_percentage/5;
+
 	constexpr int max_PWM_value{1023};
 
 	int PWM_value{(PWM_percentage/100.0)*max_PWM_value};
@@ -55,7 +61,7 @@ void Motor::setPWM(double PWM_percentage)
 	}
 }
 
-/*bool Motor::setSpeed(double motorSpeed)
+bool Motor::setSpeed(double motorSpeed)
 {
 
 	
@@ -75,4 +81,4 @@ void Motor::setPWM(double PWM_percentage)
 	double PWM_percentage = motorSpeed/m_max_speed*100; // percentage of motor speed wrt the max speed
 
 	this->setPWM(PWM_percentage);
-}*/
+}

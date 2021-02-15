@@ -37,8 +37,8 @@ int main(int argc, char const *argv[])
 
 	int secDelay{500};
 
-	std::ofstream dataUp("dataUp.txt");
-	std::ofstream dataDown("dataDown.txt");
+	std::ofstream dataUp("Data/dataUp.txt");
+	std::ofstream dataDown("Data/dataDown.txt");
 
 	//dataFile.open("data.txt");
 

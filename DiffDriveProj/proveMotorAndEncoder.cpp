@@ -30,31 +30,31 @@ int main(int argc, char const *argv[])
 	}
 	std::cout << "Wiring setup completed.\n";
 
-	std::cout << "Enter a PWM signal percentage (35-100): ";
+	//std::cout << "Enter a PWM signal percentage (35-100): ";
 
-	int percentage{0}; //PWM initial percentage
-	std::cin >> percentage;
+	int percentage{100}; //PWM initial percentage
+	//std::cin >> percentage;
 
-	assert(percentage>=35 && percentage<=100);
+	//assert(percentage>=35 && percentage<=100);
 
 	//set forward motion for both the motors
 	right_motor.setForwardDirection();
 	left_motor.setForwardDirection();
 
-	int secDelay{3000}; // encoder reading seconds
+	int secDelay{2000}; // encoder reading seconds
 
 	int dicreasePercentageStep{5}; // step to dicrease the percentage in while loop
 
 	discardFirstEncoderInput(percentage); // discard the count read until now from the encoders
 
-	while(percentage>=35)
+	while(percentage>=0)
 	{
 		right_motor.setPWM(percentage);
 		left_motor.setPWM(percentage);
 
 		std::cout << "The motor is running with a " << percentage << "% PWM signal.\n";
 		delay(secDelay);
-
+		std::cout << "Estimated speed: " << 180*percentage/100 <<'\n';
 		std::cout << "After " << secDelay/1000.0 << " seconds, the encoders have read a RPM of:\nl: " << left_encoder.getRotations(secDelay, true) << "\tr:" << right_encoder.getRotations(secDelay,true) << "\n\n";
 		
 		percentage -= dicreasePercentageStep;
